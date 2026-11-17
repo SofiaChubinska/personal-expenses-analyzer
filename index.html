@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="uk">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Аналіз особистих витрат</title><link rel="stylesheet" href="/style.css">
+<script defer src="/dashboard.js"></script></head>
+<body><main>
+<header><h1>Аналіз особистих витрат</h1>
+<p>Завантажте операції, щоб побачити структуру витрат і прогноз на наступний місяць.</p></header>
+<section aria-label="Дані" class="toolbar">
+<label>Файл CSV або Excel <input id="file" type="file" accept=".csv,.xlsx"></label>
+<button id="sample" type="button">8 прикладів операцій</button>
+<button id="demo" type="button">Демонстраційна історія</button>
+<label>Валюта <select id="currency" disabled></select></label>
+<label><input type="checkbox" id="exclude"> Останній місяць неповний</label>
+</section>
+<p id="status" role="status">Виберіть файл або демонстраційний набір.</p>
+<div id="report" hidden>
+<section class="cards">
+<div><h2>Сума витрат</h2><strong id="total"></strong></div>
+<div><h2>Операції</h2><strong id="count"></strong></div>
+<div><h2>Прогноз</h2><strong id="forecast"></strong><p id="model-note"></p></div>
+</section>
+<div class="grid">
+<section><h2>Структура витрат</h2><div id="categories"></div></section>
+<section><h2>Динаміка витрат</h2>
+<label>Період <select id="period"><option value="monthly">Місяці</option><option value="daily">Дні</option></select></label>
+<div id="trend"></div></section>
+<section><h2>Рекомендації</h2><ul id="recommendations"></ul></section>
+<section><h2>Асистент</h2>
+<form id="ask"><label for="question">Запитання про вибрані витрати</label>
+<div class="question"><input id="question" maxlength="400" required placeholder="Що можна скоротити?"><button>Запитати</button></div></form>
+<p id="answer" role="status"></p><small id="mode"></small></section>
+</div>
+<details><summary id="table-caption">Операції</summary>
+<div class="scroll"><table><thead><tr><th>Дата</th><th>Опис</th><th>Сума</th><th>Категорія</th></tr></thead>
+<tbody id="transactions"></tbody></table></div>
+<div class="pager"><button id="prev" type="button">Назад</button><span id="page"></span><button id="next" type="button">Далі</button></div>
+</details>
+</div></main></body></html>
